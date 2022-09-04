@@ -31,9 +31,57 @@
 # print(list)
 
 '''
-Задайте список из n чисел последовательности $(1+\frac 1 n)^n$ и выведите на экран их сумму.
+3 Задайте список из n чисел последовательности (1 + 1/n)^n и выведите на экран их сумму.
 
 Пример:
 
 - Для n = 6: {1: 4, 2: 7, 3: 10, 4: 13, 5: 16, 6: 19}
 '''
+
+# number = int(input('Введите натуральное число '))
+# print ('{', end = '')
+# for i in range(1, number + 1):
+#     if i != number:
+#         print(f'{i}: {round(((1 + 1/i) ** i), 2)},', end = ' ')
+#     else:
+#         print(f'{i}: {round(((1 + 1/i) ** i), 2)}' + '}')
+
+'''
+4. Задайте список из N элементов, заполненных числами из промежутка [-N, N]. 
+Найдите произведение элементов на указанных позициях. 
+Позиции хранятся в файле file.txt в одной строке одно число.
+'''
+# from random import randint
+
+# element_numbers = int(input('Введите натуральное число '))
+# list = []
+# for i in range(0, element_numbers):
+#     list.append(randint(-element_numbers, element_numbers))
+# print(list)
+# f = open('file.txt', 'w', encoding='utf-8')
+# for i in range(1, randint(1, element_numbers)):
+#     f.write(str(randint(0, element_numbers - 1)) + '\n')
+# f.close()
+
+# f = open('file.txt', 'r', encoding='utf-8')
+# for line in f:
+#     print(list[int(line)], end = ' ')
+# f.close()
+
+'''
+5. Реализуйте алгоритм перемешивания списка.
+'''
+from random import randint
+
+list = []
+for i in range(0, randint(1, 10)):
+    list.append(randint(0, 50))
+print(list)
+
+for i in range(1, randint(10, 20)):
+    first_sort_element = randint(0, len(list) - 1)
+    second_sort_element = randint(0, len(list) - 1)
+    temp = list[first_sort_element]
+    list[first_sort_element] = list[second_sort_element]
+    list[second_sort_element] = temp
+print(list)
