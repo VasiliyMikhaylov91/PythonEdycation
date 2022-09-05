@@ -59,7 +59,7 @@ else:
 
 x = int(input('введите число '))
 
-if ((x % 5 == 0) and (x % 10 == 0)) or (x % 15 == 0) and (x % 30 != 0):
+if ((x % 5 == 0) and (x % 10 == 0)) or ((x % 15 == 0) and (x % 30 != 0)):
     print('Ok')
 else:
     print('nope')
