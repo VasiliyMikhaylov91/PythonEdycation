@@ -91,11 +91,11 @@
 
 list = [0]
 fibonacci_number = int(input('Введите количество чисел ряда Фибоначчи '))
-for i in range(1, fibonacci_number + 1):
-    if (i == 1) or (i == 2):
+for i in range(0, fibonacci_number):
+    if (i == 0) or (i == 1):
         list.append(1)
     else:
-        list.append(list[i - 1] + list[i - 2])
+        list.append(list[i] + list[i - 1])
 for i in range(0, fibonacci_number):
     if fibonacci_number%2 == 0:
         list.insert(i, list[- i - 1] * ((-1) ** (i + 1)))
