@@ -55,7 +55,7 @@ from random import randint
 
 element_numbers = int(input('Введите натуральное число '))
 list = []
-for i in range(0, element_numbers):
+for i in range(element_numbers):
     list.append(randint(-element_numbers, element_numbers))
 print(list)
 f = open('file.txt', 'w', encoding='utf-8')

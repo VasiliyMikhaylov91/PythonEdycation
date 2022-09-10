@@ -30,26 +30,26 @@
 "Я люблю питон!"
 "лю" -> 2
 '''
-n = int(input('Введите число: '))
-i = 1
-res = 1
-while i <= n:
-    print(res, end=', ')
-    res *= -3
-    i += 1
+# n = int(input('Введите число: '))
+# i = 1
+# res = 1
+# while i <= n:
+#     print(res, end=', ')
+#     res *= -3
+#     i += 1
 
-# 2
-n = int(input('Введите число: '))
-i = 1
-res = 1
-while i <= n:
-    res = 3*i+1
-    print(f'{i}: {res}', end=' | ')
-    i += 1
+# # 2
+# n = int(input('Введите число: '))
+# i = 1
+# res = 1
+# while i <= n:
+#     res = 3*i+1
+#     print(f'{i}: {res}', end=' | ')
+#     i += 1
 
-#3
-str1 = input('Введите строку 1: ')
-str2 = input('Введите строку 2: ')
-list = str1.split(str2)
-print(len(list) - 1)
-print(list)
+# #3
+# str1 = input('Введите строку 1: ')
+# str2 = input('Введите строку 2: ')
+# list = str1.split(str2)
+# print(len(list) - 1)
+# print(list)
