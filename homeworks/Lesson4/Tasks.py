@@ -54,7 +54,19 @@
 
 - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 '''
-
+from random import randint
+def polynom(degree: int, result_str: str = '') -> str:
+    coeff = randint(0, 100)
+    if degree < 0: 
+        return str
+    if coeff == 0:
+         return polynom(degree - 1, str)
+    if degree == 0: 
+        return polynom(degree - 1, str + f'+{coeff}')
+    if degree == 1: 
+        return polynom(degree - 1, str + f'+{coeff}*x')
+    return polynom(degree - 1, str + f'+{coeff}*x^{degree}')
+print(polynom(int(input('Введите степень числа '))))
 '''
 Даны два файла, в каждом из которых находится запись многочлена. 
 Задача - сформировать файл, содержащий сумму многочленов
