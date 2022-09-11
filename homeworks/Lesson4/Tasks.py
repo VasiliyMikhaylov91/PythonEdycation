@@ -65,7 +65,7 @@ def polynom(degree: int, result_str: str = '') -> str:
         elif degree == 1:
             result_str += f'+{coeff}*x'
         else:
-            result_str += f'+{coeff}*x^{degree}'
+            result_str += f'+{coeff}*x**3{degree}'
     return polynom(degree - 1, result_str)
 result = polynom(int(input('Введите степень числа ')))[1:]
 print(result)
