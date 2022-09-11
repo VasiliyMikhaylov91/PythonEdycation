@@ -58,16 +58,20 @@ from random import randint
 def polynom(degree: int, result_str: str = '') -> str:
     coeff = randint(0, 100)
     if degree < 0: 
-        return str
-    if coeff == 0:
-         return polynom(degree - 1, str)
-    if degree == 0: 
-        return polynom(degree - 1, str + f'+{coeff}')
-    if degree == 1: 
-        return polynom(degree - 1, str + f'+{coeff}*x')
-    return polynom(degree - 1, str + f'+{coeff}*x^{degree}')
-print(polynom(int(input('Введите степень числа '))))
+        return result_str
+    if coeff != 0:
+        if degree == 0:
+            result_str += f'+{coeff}'
+        elif degree == 1:
+            result_str += f'+{coeff}*x'
+        else:
+            result_str += f'+{coeff}*x^{degree}'
+    return polynom(degree - 1, result_str)
+result = polynom(int(input('Введите степень числа ')))[1:]
+print(result)
+with open('polynom.json', 'w') as polynom_file:
+    polynom_file.write(result)
 '''
-Даны два файла, в каждом из которых находится запись многочлена. 
+5 Даны два файла, в каждом из которых находится запись многочлена. 
 Задача - сформировать файл, содержащий сумму многочленов
 '''
