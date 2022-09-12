@@ -76,13 +76,33 @@
 5 Даны два файла, в каждом из которых находится запись многочлена. 
 Задача - сформировать файл, содержащий сумму многочленов
 '''
-polynom_str = '21*x**2+43*x+32'
-polynom_list = polynom_str.split('+')
-for i in range(len(polynom_list)):
-    if not('x' in polynom_list[i]):
-        polynom_list[i] += '*x**0'
-    if not('**' in polynom_list[i]):
-        polynom_list[i] += '**1'
-polynom_list_of_list = []
-for i in polynom_list:
-    polynom_list_of_list.append(i.)
+
+def polynom_reconstruction_list(polinom: str) -> list:
+    count = 1
+    while count != len(polinom):
+        if polinom[count] == '-':
+            polinom = polinom[:count] + '+' + polinom[count:]
+            count += 1
+        count += 1
+    polynom_list = polinom.split('+')
+    for i in range(len(polynom_list)):
+         if not('x' in polynom_list[i]):
+             polynom_list[i] += '*x**0'
+         if not('**' in polynom_list[i]):
+             polynom_list[i] += '**1'
+    polynom_list_of_list = []
+    for i in polynom_list:
+        polynom_list_of_list.append(list(map(int, i.split('*x**'))))
+    count = 0
+    while count != len(polynom_list_of_list):
+        if polynom_list_of_list[-1 - count][1] != count:
+            polynom_list_of_list.extend([0])
+            polynom_list_of_list.insert(- 1 - count, [0, count])
+            polynom_list_of_list.pop()
+            count -=1
+        count += 1
+    return polynom_list_of_list
+
+polynom_str = '-32*x**4-41*x**3-21*x**2-42'
+
+print(polynom_reconstruction_list(polynom_str))
