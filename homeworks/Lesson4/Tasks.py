@@ -54,24 +54,35 @@
 
 - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 '''
-from random import randint
-def polynom(degree: int, result_str: str = '') -> str:
-    coeff = randint(0, 100)
-    if degree < 0: 
-        return result_str
-    if coeff != 0:
-        if degree == 0:
-            result_str += f'+{coeff}'
-        elif degree == 1:
-            result_str += f'+{coeff}*x'
-        else:
-            result_str += f'+{coeff}*x**3{degree}'
-    return polynom(degree - 1, result_str)
-result = polynom(int(input('Введите степень числа ')))[1:]
-print(result)
-with open('polynom.json', 'w') as polynom_file:
-    polynom_file.write(result)
+# from random import randint
+# def polynom(degree: int, result_str: str = '') -> str:
+#     coeff = randint(0, 100)
+#     if degree < 0:
+#         result_str += '=0'
+#         return result_str
+#     if coeff != 0:
+#         if degree == 0:
+#             result_str += f'+{coeff}'
+#         elif degree == 1:
+#             result_str += f'+{coeff}*x'
+#         else:
+#             result_str += f'+{coeff}*x**{degree}'
+#     return polynom(degree - 1, result_str)
+# result = polynom(int(input('Введите степень числа ')))[1:]
+# print(result)
+# with open('polynom.json', 'w') as polynom_file:
+#     polynom_file.write(result)
 '''
 5 Даны два файла, в каждом из которых находится запись многочлена. 
 Задача - сформировать файл, содержащий сумму многочленов
 '''
+polynom_str = '21*x**2+43*x+32'
+polynom_list = polynom_str.split('+')
+for i in range(len(polynom_list)):
+    if not('x' in polynom_list[i]):
+        polynom_list[i] += '*x**0'
+    if not('**' in polynom_list[i]):
+        polynom_list[i] += '**1'
+polynom_list_of_list = []
+for i in polynom_list:
+    polynom_list_of_list.append(i.)
