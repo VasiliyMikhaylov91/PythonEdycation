@@ -77,6 +77,7 @@
 Задача - сформировать файл, содержащий сумму многочленов
 '''
 
+
 def polynom_reconstruction_list(polinom: str) -> list:
     count = 1
     while count != len(polinom):
@@ -103,6 +104,51 @@ def polynom_reconstruction_list(polinom: str) -> list:
         count += 1
     return polynom_list_of_list
 
-polynom_str = '-32*x**4-41*x**3-21*x**2-42'
+def list_reconstruction_polynom(polynomlist: list) -> str:
+    polynom = ''
+    for i in polynomlist:
+        if i[0] != 0:
+            if(0 != i[1] != 1):
+                if i[0] < 0:
+                    polynom += f'{i[0]}*x**{i[1]}'
+                else:
+                    polynom += f'+{i[0]}*x**{i[1]}'
+            elif (i[1] == 1):
+                if i[0] < 0:
+                    polynom += f'{i[0]}*x'
+                else:
+                    polynom += f'+{i[0]}*x'
+            else:
+                if i[0] < 0:
+                    polynom += f'{i[0]}'
+                else:
+                    polynom += f'+{i[0]}'
+    return polynom
 
-print(polynom_reconstruction_list(polynom_str))
+def polynom_list_summ(first_polynom: list, second_polynom: list) -> list:
+    if first_polynom[0][1] > second_polynom[0][1]:
+        max_digree_polynom = first_polynom
+        min_digree_polynom = second_polynom
+    else:
+        max_digree_polynom = second_polynom
+        min_digree_polynom = first_polynom
+    result_polynom = max_digree_polynom
+    for i in result_polynom:
+        for j in min_digree_polynom:
+            if i[1] == j[1]:
+                i[0] += j[0]
+    return result_polynom
+
+with open('polynom_1.json', 'r') as polynom_file:
+    polynom_first = polynom_file.read()
+# Пример из файла:-32*x**4-41*x**3-21*x**2+42
+
+with open('polynom_2.json', 'r') as polynom_file:
+    polynom_second = polynom_file.read()
+# Пример из файла:21*x**2-4
+
+polynom_summ = list_reconstruction_polynom(polynom_list_summ\
+            (polynom_reconstruction_list(polynom_first),polynom_reconstruction_list(polynom_second)))
+
+with open('polynom_result.json', 'w') as polynom_file:
+    polynom_file.write(polynom_summ)
