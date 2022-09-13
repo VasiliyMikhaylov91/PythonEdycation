@@ -33,12 +33,13 @@
 '''
 Задайте два числа. Напишите программу, которая найдёт НОК (наименьшее общее кратное) этих двух чисел.
 '''
-def less_common_div(first_number: int, second_number: int) -> int:
-    minimal_number = min[first_number, second_number]
-    for i in range(2, minimal_number + 1):
-        if (first_number % i == 0) and (i % second_number % i == 0):
-            return i
-    return None
+def gcd(a, b):
+    if (b == 0):
+        return a
+    else:
+        return gcd(b, a % b)
+def lcm(a, b):
+    return (a*b)/gcd(a,b)
 
-print(less_common_div(int(input('Введите первое число ')), int(input('Введите второе число '))))
+print(lcm(int(input('Введите первое число ')), int(input('Введите второе число '))))
     
