@@ -5,18 +5,18 @@
 
 - [2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ: 12
 '''
-from random import randint
-def summ_unhones(summ_list: list) -> int:
-    summ = 0
-    for i in range(1, len(summ_list), 2):
-        summ += summ_list[i]
-    return summ
+# from random import randint
+# def summ_unhones(summ_list: list) -> int:
+#     summ = 0
+#     for i in range(1, len(summ_list), 2):
+#         summ += summ_list[i]
+#     return summ
 
-input_list = []
-for i in range (0, randint(1, 10)):
-    input_list.append(randint(0, 50))
+# input_list = []
+# for i in range (0, randint(1, 10)):
+#     input_list.append(randint(0, 50))
 
-print(f'{input_list} -> {summ_unhones(input_list)}')
+# print(f'{input_list} -> {summ_unhones(input_list)}')
 
 # summ = 0
 # for i in range(1, len(list), 2):
@@ -81,14 +81,14 @@ print(f'{input_list} -> {summ_unhones(input_list)}')
 - 3 -> 11
 - 2 -> 10
 '''
-# def decimal_bin_converting(decimal_value: int, binary_value: str = '') -> str:
-#     if decimal_value > 0:
-#         return decimal_bin_converting(int(decimal_value/2), str(decimal_value % 2) + binary_value)
-#     else:
-#         return binary_value
+def decimal_bin_converting(decimal_value: int) -> str:
+    if decimal_value > 0:
+        return decimal_bin_converting(int(decimal_value/2)) + f'{decimal_value % 2}'
+    else:
+        return ''
 
-# dec_number = int(input('Введите целое число '))
-# print(f'{dec_number} -> {decimal_bin_converting(dec_number)}')
+dec_number = int(input('Введите целое число '))
+print(f'{dec_number} -> {decimal_bin_converting(dec_number)}')
 
 '''
 5 Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
