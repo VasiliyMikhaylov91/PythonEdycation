@@ -54,22 +54,23 @@
 
 - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 '''
-# from random import randint
-# def polynom(degree: int) -> str:
-#     coeff = randint(0, 100)
-#     if degree < 0:
-#         return '=0'
-#     if coeff != 0:
-#         if degree == 0:
-#             return  f'+{coeff}' + polynom(degree - 1)
-#         elif degree == 1:
-#             return f'+{coeff}*x' + polynom(degree - 1)
-#         else:
-#             return f'+{coeff}*x**{degree}' + polynom(degree - 1)
-# result = polynom(int(input('Введите степень числа ')))[1:]
-# print(result)
-# with open('polynom.json', 'w') as polynom_file:
-#     polynom_file.write(result)
+from random import randint
+def polynom(degree: int) -> str:
+    coeff = randint(0, 100)
+    if degree < 0:
+        return '=0'
+    if coeff != 0:
+        if degree == 0:
+            return  f'+{coeff}' + polynom(degree - 1)
+        elif degree == 1:
+            return f'+{coeff}*x' + polynom(degree - 1)
+        else:
+            return f'+{coeff}*x**{degree}' + polynom(degree - 1)
+    return polynom(degree - 1)
+result = polynom(int(input('Введите степень числа ')))[1:]
+print(result)
+with open('polynom.json', 'w') as polynom_file:
+    polynom_file.write(result)
 '''
 5 Даны два файла, в каждом из которых находится запись многочлена. 
 Задача - сформировать файл, содержащий сумму многочленов
