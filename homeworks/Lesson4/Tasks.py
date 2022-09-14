@@ -21,19 +21,19 @@
 '''
 2 Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
 '''
-# def simple_numbers(decomposition_number: int, div_number: int = 2, result_list: list = []) -> list:
-#     if 0 <= decomposition_number <= div_number :
-#         result_list.append(decomposition_number)
-#         return result_list
-#     if decomposition_number % div_number == 0:
-#         result_list.append(div_number)
-#         return simple_numbers(decomposition_number // div_number, div_number, result_list)
-#     return simple_numbers(decomposition_number, div_number + 1, result_list)
-# print(simple_numbers(int(input('Введите число '))))
+def simple_numbers(decomposition_number: int, div_number: int = 2, result_list: list = []) -> list:
+    if 0 <= decomposition_number <= div_number :
+        result_list.append(decomposition_number)
+        return result_list
+    if decomposition_number % div_number == 0:
+        result_list.append(div_number)
+        return simple_numbers(decomposition_number // div_number, div_number, result_list)
+    return simple_numbers(decomposition_number, div_number + 1, result_list)
+print(simple_numbers(int(input('Введите число '))))
 
 '''
 3 Задайте последовательность чисел.  Напишите программу, которая выведет 
-список неповторяющихся элементов исходной последовательности.
+список неповторяющихся элементов исходной последовательности. 
 '''
 
 # def uniq_list(number_list: list) -> list:
