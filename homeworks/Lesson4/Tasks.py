@@ -21,15 +21,15 @@
 '''
 2 Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
 '''
-def simple_numbers(decomposition_number: int, div_number: int = 2, result_list: list = []) -> list:
-    if 0 <= decomposition_number <= div_number :
-        result_list.append(decomposition_number)
-        return result_list
-    if decomposition_number % div_number == 0:
-        result_list.append(div_number)
-        return simple_numbers(decomposition_number // div_number, div_number, result_list)
-    return simple_numbers(decomposition_number, div_number + 1, result_list)
-print(simple_numbers(int(input('Введите число '))))
+# def simple_numbers(decomposition_number: int, div_number: int = 2, result_list: list = []) -> list:
+#     if 0 <= decomposition_number <= div_number :
+#         result_list.append(decomposition_number)
+#         return result_list
+#     if decomposition_number % div_number == 0:
+#         result_list.append(div_number)
+#         return simple_numbers(decomposition_number // div_number, div_number, result_list)
+#     return simple_numbers(decomposition_number, div_number + 1, result_list)
+# print(simple_numbers(int(input('Введите число '))))
 
 '''
 3 Задайте последовательность чисел.  Напишите программу, которая выведет 
@@ -38,10 +38,14 @@ print(simple_numbers(int(input('Введите число '))))
 
 # def uniq_list(number_list: list) -> list:
 #     new_list = []
-#     for i in number_list:
-#         if not (i in new_list):
-#             new_list.append(i)
-#     return new_list
+#     for i in range(len(number_list)):
+#         count = 0
+#         for j in range(len(number_list)):
+#             if number_list[i] == number_list[j]:
+#                 count += 1
+#             if count == 1 and j == len(number_list)-1:
+#                 new_list.append(i)
+#     return new_list 
 
 # print(uniq_list([input('Введите число ') \
 #     for i in range(int(input('Введите количество элементов списка ')))]))
@@ -54,23 +58,23 @@ print(simple_numbers(int(input('Введите число '))))
 
 - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 '''
-from random import randint
-def polynom(degree: int) -> str:
-    coeff = randint(0, 100)
-    if degree < 0:
-        return '=0'
-    if coeff != 0:
-        if degree == 0:
-            return  f'+{coeff}' + polynom(degree - 1)
-        elif degree == 1:
-            return f'+{coeff}*x' + polynom(degree - 1)
-        else:
-            return f'+{coeff}*x**{degree}' + polynom(degree - 1)
-    return polynom(degree - 1)
-result = polynom(int(input('Введите степень числа ')))[1:]
-print(result)
-with open('polynom.json', 'w') as polynom_file:
-    polynom_file.write(result)
+# from random import randint
+# def polynom(degree: int) -> str:
+#     coeff = randint(0, 100)
+#     if degree < 0:
+#         return '=0'
+#     if coeff != 0:
+#         if degree == 0:
+#             return  f'+{coeff}' + polynom(degree - 1)
+#         elif degree == 1:
+#             return f'+{coeff}*x' + polynom(degree - 1)
+#         else:
+#             return f'+{coeff}*x**{degree}' + polynom(degree - 1)
+#     return polynom(degree - 1)
+# result = polynom(int(input('Введите степень числа ')))[1:]
+# print(result)
+# with open('polynom.json', 'w') as polynom_file:
+#     polynom_file.write(result)
 '''
 5 Даны два файла, в каждом из которых находится запись многочлена. 
 Задача - сформировать файл, содержащий сумму многочленов
