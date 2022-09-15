@@ -36,19 +36,19 @@
 список неповторяющихся элементов исходной последовательности. 
 '''
 
-# def uniq_list(number_list: list) -> list:
-#     new_list = []
-#     for i in range(len(number_list)):
-#         count = 0
-#         for j in range(len(number_list)):
-#             if number_list[i] == number_list[j]:
-#                 count += 1
-#             if count == 1 and j == len(number_list)-1:
-#                 new_list.append(i)
-#     return new_list 
+def uniq_list(number_list: list) -> list:
+    new_list = []
+    for i in range(len(number_list)):
+        count = 0
+        for j in range(len(number_list)):
+            if number_list[i] == number_list[j]:
+                count += 1
+            if count == 1 and j == len(number_list)-1:
+                new_list.append(i)
+    return new_list 
 
-# print(uniq_list([input('Введите число ') \
-#     for i in range(int(input('Введите количество элементов списка ')))]))
+print(uniq_list([input('Введите число ') \
+    for i in range(int(input('Введите количество элементов списка ')))]))
 
 '''
 4 Задана натуральная степень k. Сформировать случайным образом список коэффициентов (значения от 0 до 100) 
