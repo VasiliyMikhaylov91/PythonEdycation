@@ -102,8 +102,6 @@ b) Подумайте как наделить бота ""интеллектом"
 3 Создайте программу для игры в ""Крестики-нолики"".
 '''
 from os import system
-from re import L
-from tabnanny import check
 def zero_chenge(x):
     return x if x != 0 else ' '
 
@@ -126,14 +124,37 @@ def show_field(field: list = []):
 def coordinate(function, number:int)-> int:
     return function(number)
 
+def check_identity(field: list, simbol:str) -> bool:
+    for i in field:
+        if fl_r := (i == [simbol, simbol, simbol]):
+            return fl_r
+    for i in range(len(field)):
+        if fl_c := (field[0][i] == field[1][i] == field[2][i] != 0):
+            return fl_c
+    if (field[0][0] == field[1][1] == field[2][2] != 0) or\
+        (field[-1][0] == field[-2][1] == field[-3][2] != 0):
+        return True
+    else:
+        return False
+
+def zero_absece(field: list) -> bool:
+    for i in field:
+        for j in i:
+            if j == 0:
+                return False
+    else:
+        return True
+
 def game():
     game_list = []
     for i in range(0,3):
         game_list.append([0, 0, 0])
     show_field(game_list)
     move = False
+    winer_flag = False
+    full_field = False
 
-    while True:
+    while not(winer_flag or full_field):
         move = not move
         word = "крестик" if move else "нолик"
         user_option = int(input(f'Куда поставить {word}? ')) - 1
@@ -147,8 +168,8 @@ def game():
         show_field(game_list)
         winer_flag = check_identity(game_list,sign)
         if winer_flag:
-            print(f'{word} победили! Ура, ура!')
-        if (not winer_flag) and zero_absece(game_list):
+            print(f'{word}и победили! Ура, ура!')
+        if (not winer_flag) and (full_field := zero_absece(game_list)):
             print('У нас ничья')
 
 game()
