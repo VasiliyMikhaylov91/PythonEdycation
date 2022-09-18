@@ -101,79 +101,109 @@ b) Подумайте как наделить бота ""интеллектом"
 '''
 3 Создайте программу для игры в ""Крестики-нолики"".
 '''
-from os import system
-def zero_chenge(x):
-    return x if x != 0 else ' '
+# from os import system
+# def zero_chenge(x):
+#     return x if x != 0 else ' '
 
-def show_field(field: list = []):
-    system('cls')
-    for i in range(0, 5):
-        if i%2:
-            print('-----------')
-        else:
-            row = int(i/2*3)
-            print(f' {row + 1} | {row + 2} | {row + 3}')
-    print()
-    for i in range(0, 5):
-        if i%2:
-            print('-----------')
-        else:
-            row = int(i/2)
-            print(f' {zero_chenge(field[row][0])} | {zero_chenge(field[row][1])} | {zero_chenge(field[row][2])}')
+# def show_field(field: list = []):
+#     system('cls')
+#     for i in range(0, 5):
+#         if i%2:
+#             print('-----------')
+#         else:
+#             row = int(i/2*3)
+#             print(f' {row + 1} | {row + 2} | {row + 3}')
+#     print()
+#     for i in range(0, 5):
+#         if i%2:
+#             print('-----------')
+#         else:
+#             row = int(i/2)
+#             print(f' {zero_chenge(field[row][0])} | {zero_chenge(field[row][1])} | {zero_chenge(field[row][2])}')
 
-def coordinate(function, number:int)-> int:
-    return function(number)
+# def coordinate(function, number:int)-> int:
+#     return function(number)
 
-def check_identity(field: list, simbol:str) -> bool:
-    for i in field:
-        if fl_r := (i == [simbol, simbol, simbol]):
-            return fl_r
-    for i in range(len(field)):
-        if fl_c := (field[0][i] == field[1][i] == field[2][i] != 0):
-            return fl_c
-    if (field[0][0] == field[1][1] == field[2][2] != 0) or\
-        (field[-1][0] == field[-2][1] == field[-3][2] != 0):
-        return True
-    else:
-        return False
+# def check_identity(field: list, simbol:str) -> bool:
+#     for i in field:
+#         if fl_r := (i == [simbol, simbol, simbol]):
+#             return fl_r
+#     for i in range(len(field)):
+#         if fl_c := (field[0][i] == field[1][i] == field[2][i] != 0):
+#             return fl_c
+#     if (field[0][0] == field[1][1] == field[2][2] != 0) or\
+#         (field[-1][0] == field[-2][1] == field[-3][2] != 0):
+#         return True
+#     else:
+#         return False
 
-def zero_absece(field: list) -> bool:
-    for i in field:
-        for j in i:
-            if j == 0:
-                return False
-    else:
-        return True
+# def zero_absece(field: list) -> bool:
+#     for i in field:
+#         for j in i:
+#             if j == 0:
+#                 return False
+#     else:
+#         return True
 
-def game():
-    game_list = []
-    for i in range(0,3):
-        game_list.append([0, 0, 0])
-    show_field(game_list)
-    move = False
-    winer_flag = False
-    full_field = False
+# def game():
+#     game_list = []
+#     for i in range(0,3):
+#         game_list.append([0, 0, 0])
+#     show_field(game_list)
+#     move = False
+#     winer_flag = False
+#     full_field = False
 
-    while not(winer_flag or full_field):
-        move = not move
-        word = "крестик" if move else "нолик"
-        user_option = int(input(f'Куда поставить {word}? ')) - 1
-        coordinate_line = coordinate(lambda x: x//3,user_option)
-        coordinate_col = coordinate(lambda x: x%3 ,user_option)
-        while not(0 <= user_option < 9) or (game_list[coordinate_line][coordinate_col] != 0):
-            user_option = int(input(f'Туда нельзя поставить. Куда поставить {word}? ')) - 1
-            coordinate_line = coordinate(lambda x: x//3,user_option)
-            coordinate_col = coordinate(lambda x: x%3 ,user_option)
-        sign = game_list[coordinate_line][coordinate_col] = 'X' if move else 'O'
-        show_field(game_list)
-        winer_flag = check_identity(game_list,sign)
-        if winer_flag:
-            print(f'{word}и победили! Ура, ура!')
-        if (not winer_flag) and (full_field := zero_absece(game_list)):
-            print('У нас ничья')
+#     while not(winer_flag or full_field):
+#         move = not move
+#         word = "крестик" if move else "нолик"
+#         user_option = int(input(f'Куда поставить {word}? ')) - 1
+#         coordinate_line = coordinate(lambda x: x//3,user_option)
+#         coordinate_col = coordinate(lambda x: x%3 ,user_option)
+#         while not(0 <= user_option < 9) or (game_list[coordinate_line][coordinate_col] != 0):
+#             user_option = int(input(f'Туда нельзя поставить. Куда поставить {word}? ')) - 1
+#             coordinate_line = coordinate(lambda x: x//3,user_option)
+#             coordinate_col = coordinate(lambda x: x%3 ,user_option)
+#         sign = game_list[coordinate_line][coordinate_col] = 'X' if move else 'O'
+#         show_field(game_list)
+#         winer_flag = check_identity(game_list,sign)
+#         if winer_flag:
+#             print(f'{word}и победили! Ура, ура!')
+#         if (not winer_flag) and (full_field := zero_absece(game_list)):
+#             print('У нас ничья')
 
-game()
+# game()
             
 '''
 4 Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+Входные и выходные данные хранятся в отдельных текстовых файлах.
 '''
+
+def archive(text: str) -> str:
+    if text == '':
+       return ''
+    count = 1
+    while count!= len(text) and text[count] == text[count-1]:
+        count +=1
+    else:
+        return text[count-1] + str(count) + (archive(text[count:]) if count != len(text) else archive(''))
+
+def unarchive(arc_text: str) -> str:
+    result_text = ''
+    while arc_text != '':
+        count = 1
+        while count + 1 < len(arc_text) and arc_text[count + 1].isdigit():
+            count += 1
+        result_text += arc_text[0] * int((arc_text[1:count + 1] if (count + 1 != len(arc_text)) else arc_text[1:]))
+        arc_text = arc_text[count + 1:]
+    return result_text
+
+with open('start_text.json', 'r') as of:
+    file_text = of.read()
+
+print(at := archive(file_text))
+
+with open('archive_text.json', 'w') as of:
+    of.write(at)
+
+print(unarchive(at))
