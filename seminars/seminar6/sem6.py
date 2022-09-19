@@ -14,24 +14,27 @@
         
         (1+2)*3 => 9;
 '''
-def funct(esp_str:str) ->int:
-    if not((plus:='+' in esp_str) or (minus:='-' in esp_str) or (mult:='*' in esp_str) or ('/' in esp_str)):
+def funct(esp_str:str) -> int:
+    par_open=esp_str.find('(')
+    if par_open != -1:
+        return funct(esp_str[:par_open] + str(funct(esp_str[par_open + 1:(par_close := esp_str.find(')'))])) \
+            + (esp_str[par_close + 1:] if par_close != len(esp_str) else ''))
+    plus=esp_str.find('+')
+    minus=esp_str.find('-')
+    mult=esp_str.find('*') 
+    div = esp_str.find('/')
+    if (plus == -1) and (minus == -1) and (mult == -1) and (div == -1):
         return int(esp_str)
-    if plus or minus:
-        if plus and minus:
-            if esp_str.find('+') < esp_str.find('-'):
-                return funct(esp_str[:esp_str.find('+')]) + funct(esp_str[esp_str.find('+') + 1:])
-            else:
-                return funct(esp_str[:esp_str.find('-')]) - funct(esp_str[esp_str.find('-') + 1:])
-        if plus:
-            return funct(esp_str[:esp_str.find('+')]) + funct(esp_str[esp_str.find('+') + 1:])
-        return funct(esp_str[:esp_str.find('-')]) - funct(esp_str[esp_str.find('-') + 1:])
-    if mult:
-        return funct(esp_str[:esp_str.find('*')]) * funct(esp_str[esp_str.find('*') + 1:])
-    return funct(esp_str[:esp_str.find('/')]) / funct(esp_str[esp_str.find('/') + 1:])
+    if plus != -1:
+        return funct(esp_str[:plus]) + funct(esp_str[plus + 1:])
+    if minus != -1:
+        return funct(esp_str[:minus]) - funct(esp_str[minus + 1:])
+    if mult != -1:
+        return funct(esp_str[:mult]) * funct(esp_str[mult + 1:])
+    return funct(esp_str[:div]) / funct(esp_str[div + 1:])
     
 
-exp = '1-2*3'
+exp = '1+(2*3)/3'
 print(funct(exp))
 
 
