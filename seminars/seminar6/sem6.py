@@ -17,7 +17,8 @@
 def funct(esp_str:str) -> int:
     par_open=esp_str.find('(')
     if par_open != -1:
-        return funct(esp_str[:par_open] + str(funct(esp_str[par_open + 1:(par_close := esp_str.find(')'))])) \
+        par_close = esp_str.find(')')
+        return funct(esp_str[:par_open] + str(funct(esp_str[par_open + 1:par_close])) \
             + (esp_str[par_close + 1:] if par_close != len(esp_str) else ''))
     plus=esp_str.find('+')
     minus=esp_str.find('-')

@@ -51,7 +51,7 @@
 
 Пример:
 
-- [1.1, 1.2, 3.1, 5, 10.01] => 0.19
+- [1.1, 1.2, 3.1, 5.0, 10.01] => 0.19
 '''
 # from random import randint
 # from math import floor
