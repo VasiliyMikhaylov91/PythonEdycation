@@ -30,10 +30,8 @@
 - [1.1, 1.2, 3.1, 5.0, 10.01] => 0.19
 '''
 
-# def fraction(inp: float) -> float:
-#     return float(fr:=str(inp).split('.')[1])/10**(len(fr))
-# input = [1.1, 1.2, 3.1, 10.01]
-# print(max(map(fraction, input)) - min(map(fraction, input)))
+input = [1.1, 1.2, 3.1, 10.01]
+print(max(map(fract := lambda x: float(fr:=str(x).split('.')[1])/10**(len(fr)), input)) - min(map(fract, input)))
 
 '''
 5. Напишите программу, которая найдёт произведение пар чисел списка. Парой считаем первый и последний элемент, 
@@ -42,6 +40,6 @@
 - [2, 3, 4, 5, 6] => [12, 15, 16];
 - [2, 3, 5, 6] => [12, 15]
 '''
-from math import ceil
-input = [2, 3, 4, 5, 6]
-print(list(input[i] * input[-i-1] for i in range(ceil(len(input)/2))))
+# from math import ceil
+# input = [2, 3, 4, 5, 6]
+# print(list(input[i] * input[-i-1] for i in range(ceil(len(input)/2))))
