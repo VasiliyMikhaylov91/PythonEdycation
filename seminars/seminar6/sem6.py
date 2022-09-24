@@ -18,11 +18,16 @@ def funct(esp_str:str) -> int:
     par_open=esp_str.find('(')
     if par_open != -1:
         par_close = esp_str.find(')')
+        ## Нахождение пары для закрытой скобки
+        step = 0
+        while step != -1: 
+            par_open = par_open + ((step:=esp_str[par_open + 1:par_close].find('(')) + 1 if step != -1 else 0)
+        ## Конкатинация строки после нахождения значения в скобках
         return funct(esp_str[:par_open] + str(funct(esp_str[par_open + 1:par_close])) \
-            + (esp_str[par_close + 1:] if par_close != len(esp_str) else ''))
-    plus=esp_str.find('+')
-    minus=esp_str.find('-')
-    mult=esp_str.find('*') 
+            + (esp_str[par_close + 1:] if par_close != len(esp_str) else '')) 
+    plus = esp_str.find('+')
+    minus = esp_str.find('-')
+    mult = esp_str.find('*') 
     div = esp_str.find('/')
     if (plus == -1) and (minus == -1) and (mult == -1) and (div == -1):
         return int(esp_str)
@@ -32,10 +37,9 @@ def funct(esp_str:str) -> int:
         return funct(esp_str[:minus]) - funct(esp_str[minus + 1:])
     if mult != -1:
         return funct(esp_str[:mult]) * funct(esp_str[mult + 1:])
-    return funct(esp_str[:div]) / funct(esp_str[div + 1:])
+    return int(funct(esp_str[:div]) / funct(esp_str[div + 1:]))
     
-
-exp = '1+(2*3)/3'
+exp = '4*((1+2)*(4+5)*3/3)'
 print(funct(exp))
 
 
