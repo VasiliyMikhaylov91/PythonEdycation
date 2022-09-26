@@ -1,3 +1,5 @@
+import tkinter as tk
+
 def show_list(input_list: list):
     for i in input_list:
         print(i)
