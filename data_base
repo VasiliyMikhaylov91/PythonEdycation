@@ -1,0 +1,9 @@
+arg_1 = 5
+arg_2 = 4
+result = 20
+arg_1 = 45
+arg_2 = 9
+result = 0
+arg_1 = 45
+arg_2 = 9
+result = 5

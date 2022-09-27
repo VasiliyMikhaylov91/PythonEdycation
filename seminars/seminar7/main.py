@@ -1,0 +1,3 @@
+import cont
+
+cont.Calc()

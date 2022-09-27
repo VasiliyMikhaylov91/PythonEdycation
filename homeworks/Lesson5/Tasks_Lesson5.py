@@ -180,13 +180,11 @@ b) Подумайте как наделить бота ""интеллектом"
 '''
 
 def archive(text: str) -> str:
-    if text == '':
-       return ''
     count = 1
     while count!= len(text) and text[count] == text[count-1]:
         count +=1
     else:
-        return text[count-1] + str(count) + (archive(text[count:]) if count != len(text) else archive(''))
+        return text[count-1] + str(count) + (archive(text[count:]) if count < len(text) else '')
 
 def unarchive(arc_text: str) -> str:
     result_text = ''
