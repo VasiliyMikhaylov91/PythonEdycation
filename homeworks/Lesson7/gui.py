@@ -1,4 +1,3 @@
-import tkinter as tk
 from tkinter import filedialog as fd
 
 def show_list(input_list: list):
@@ -13,4 +12,5 @@ def new_person() -> str:
 
 def get_path() -> str:
     return fd.askopenfilename(filetypes=(("TXT files", "*.txt"),
+                    ("CSV files", "*.csv"),
                    ("JSON files", "*.json")))
