@@ -4,7 +4,7 @@ import db_process, gui, list_process
 
 def phone_info_process():
     cont_process = True
-    phone_list = db_process.load_db()
+    phone_list = db_process.load_db(file_path := gui.get_path())
     while cont_process:
         os.system('cls')
         gui.show_list(phone_list)
@@ -20,5 +20,5 @@ def phone_info_process():
             case '3':
                 phone_list = list_process.del_record(phone_list, gui.request('Кого удалить? '))
             case '4':
-                db_process.save_db(phone_list)
+                db_process.save_db(phone_list, file_path)
                 cont_process = False
