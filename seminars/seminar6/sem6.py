@@ -15,9 +15,9 @@
         (1+2)*3 => 9;
 '''
 def funct(esp_str:str) -> int:
-    par_open=esp_str.find('(')
-    if par_open != -1:
-        par_close = esp_str.find(')')
+    par_close=esp_str.find(')')
+    if par_close != -1:
+        par_open = esp_str[:par_close].rfind('(')
         return funct(esp_str[:par_open] + str(funct(esp_str[par_open + 1:par_close])) \
             + (esp_str[par_close + 1:] if par_close != len(esp_str) else ''))
     plus=esp_str.find('+')
@@ -25,7 +25,7 @@ def funct(esp_str:str) -> int:
     mult=esp_str.find('*') 
     div = esp_str.find('/')
     if (plus == -1) and (minus == -1) and (mult == -1) and (div == -1):
-        return int(esp_str)
+        return float(esp_str)
     if plus != -1:
         return funct(esp_str[:plus]) + funct(esp_str[plus + 1:])
     if minus != -1:
@@ -35,7 +35,7 @@ def funct(esp_str:str) -> int:
     return funct(esp_str[:div]) / funct(esp_str[div + 1:])
     
 
-exp = '1+(2*3)/3'
+exp = '5+(4*(1+2*3)/(3*(1+2)))'
 print(funct(exp))
 
 
