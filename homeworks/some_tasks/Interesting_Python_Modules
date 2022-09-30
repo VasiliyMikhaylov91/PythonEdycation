@@ -6,3 +6,8 @@ beautiful soup парсинг
 pylow работа с изображениями
 FuzzyWuzzy нечеткое сравнение
 Qt интерфейс
+
+PS D:\GeekBrain\09_Python_Projects\Repo\Lectures\Exam_05\pipPy> Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+PS D:\GeekBrain\09_Python_Projects\Repo\Lectures\Exam_05\pipPy> .folder\Scripts\Activate
+(.folder) *PS D:\GeekBrain\09_Python_Projects\Repo\Lectures\Exam_05\pipPy>
+*впереди виртуальное окружение (.folder
