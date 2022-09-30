@@ -6,7 +6,7 @@ def show_list(input_list: list):
         global option
         option = text
         phone_list.destroy()
-    global phone_list
+    phone_list
     phone_list = Tk()
     phone_list.title('Список контактов')
     subscribers = Frame()
