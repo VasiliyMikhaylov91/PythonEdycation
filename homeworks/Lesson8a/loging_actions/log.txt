@@ -1,0 +1,7 @@
+Open G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
+search:Инженер
+add:Мозгляк;Витя;85164986;Красавчик;1000000
+delete:Мозгляк;Витя;85164986;Красавчик;1000000
+change:Козлов;Стас;78995562;Монтер;70000 -> Козловский;Стас;78995562;Монтер;70000
+change:Козловский;Стас;78995562;Монтер;70000 -> Козлов;Стас;78995562;Монтер;70000
+exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
