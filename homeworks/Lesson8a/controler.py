@@ -11,7 +11,9 @@ def phone_info_process():
             case 'add':
                 lp.new_record(phone_list, gi.new_person())
             case 'delete':
-                phone_list = lp.del_record(phone_list, gi.show_list(phone_list,'Кого удалить?', lambda: gi.del_contact(len(phone_list))))
+                phone_list = lp.del_record(phone_list, gi.show_list(phone_list,'Кого удалить?', lambda: gi.del_chenge_contact(len(phone_list))))
+            case 'change':
+                phone_list = lp.chenge_record(phone_list, num:=gi.show_list(phone_list,'Кого изменить?', lambda: gi.del_chenge_contact(len(phone_list))), gi.new_person(phone_list[num]))
             case 'exit':
                 dp.save_db(phone_list, file_path)
                 cont_process = False

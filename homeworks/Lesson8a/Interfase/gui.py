@@ -21,18 +21,20 @@ def option_button():
     button_search.pack(side=LEFT)
     button_add = Button(master=buttons, text='Добавить', command= lambda: ret_opt('add'))
     button_add.pack(side=LEFT)
+    button_change = Button(master=buttons, text='Изменить', command= lambda: ret_opt('change'))
+    button_change.pack(side=LEFT)
     button_del = Button(master=buttons, text='Удалить', command= lambda: ret_opt('delete'))
     button_del.pack(side=LEFT)
     button_exit = Button(master=buttons, text='Выход', command= lambda: ret_opt('exit'))
     button_exit.pack(side=LEFT)
 
-def del_contact(length:int):
+def del_chenge_contact(length:int):
     buttons = Frame()
     buttons.grid(row=0,column=1)
     label = Label(master=buttons, text = '*')
     label.grid(row=0, column=0)
     for i in range(length):
-        button = Button(master= buttons, height=1, text='Удалить', command= lambda:ret_opt(i))
+        button = Button(master= buttons, height=1, text='Изменить/Удалить', command= lambda:ret_opt(i))
         button.grid(column=0, row=i+1, pady = 1)
     
 
@@ -70,7 +72,7 @@ def request() -> str:
     search_window.mainloop()
     return name_search
 
-def new_person() -> str:
+def new_person(person_data:str = '') -> str:
     def create():
         global lname, fname, tel, pos, salary
         lname = entry_lname.get()
@@ -80,7 +82,7 @@ def new_person() -> str:
         salary = entry_salary.get()
         new_window.destroy()
     new_window = Tk()
-    new_window.title('Новый контакт')
+    new_window.title('Контакт')
     person = ['Фамилия', 'Имя', 'Телефон','Должность', 'Зарплата']
     for i in range(len(person)):
         label = Label(text=person[i])
@@ -95,8 +97,15 @@ def new_person() -> str:
     entry_pos.grid(row=3, column=1)
     entry_salary = Entry(width=20)
     entry_salary.grid(row=4, column=1)
-    button = Button(text='Создать контакт', command=create)
-    button.grid(row=3, column=1)
+    if person_data != '':
+        detail_data = person_data.split(';')
+        entry_lname.insert(0, detail_data[0])
+        entry_fname.insert(0, detail_data[1])
+        entry_tel.insert(0, detail_data[2])
+        entry_pos.insert(0, detail_data[3])
+        entry_salary.insert(0, detail_data[4])
+    button = Button(text='Создать/Изменить контакт', command=create)
+    button.grid(row=5, column=1)
     new_window.mainloop()
     return f'{lname};{fname};{tel};{pos};{salary}'
 
