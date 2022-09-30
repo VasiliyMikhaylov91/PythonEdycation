@@ -17,13 +17,13 @@ def result_search():
 def option_button():
     buttons = Frame()
     buttons.grid(row=1, column=0)
-    button_search = Button(master=buttons, text='Поиск', command= lambda: ret_opt('1'))
+    button_search = Button(master=buttons, text='Поиск', command= lambda: ret_opt('search'))
     button_search.pack(side=LEFT)
-    button_add = Button(master=buttons, text='Добавить', command= lambda: ret_opt('2'))
+    button_add = Button(master=buttons, text='Добавить', command= lambda: ret_opt('add'))
     button_add.pack(side=LEFT)
-    button_del = Button(master=buttons, text='Удалить', command= lambda: ret_opt('3'))
+    button_del = Button(master=buttons, text='Удалить', command= lambda: ret_opt('delete'))
     button_del.pack(side=LEFT)
-    button_exit = Button(master=buttons, text='Выход', command= lambda: ret_opt('4'))
+    button_exit = Button(master=buttons, text='Выход', command= lambda: ret_opt('exit'))
     button_exit.pack(side=LEFT)
 
 def del_contact(length:int):
@@ -43,7 +43,7 @@ def show_list(input_list: list, window_title:str, funct):
     subscribers = Frame()
     subscribers.grid(row=0, column=0, padx=5, pady=5)
     details_list = [i.split(';') for i in input_list]
-    column_names = ['Фамилия','Имя','Телефон']
+    column_names = ['Фамилия','Имя','Телефон','Должность', 'Зарплата']
     for i in range(len(column_names)):
         label = Label(master = subscribers,text= column_names[i], foreground='Gold', width=20)
         label.grid(row=0, column=i+1)
@@ -72,15 +72,17 @@ def request() -> str:
 
 def new_person() -> str:
     def create():
-        global lname, fname, tel
+        global lname, fname, tel, pos, salary
         lname = entry_lname.get()
         fname = entry_fname.get()
         tel = entry_tel.get()
+        pos = entry_pos.get()
+        salary = entry_salary.get()
         new_window.destroy()
     new_window = Tk()
     new_window.title('Новый контакт')
-    person = ['Фамилия', 'Имя', 'Телефон']
-    for i in range(3):
+    person = ['Фамилия', 'Имя', 'Телефон','Должность', 'Зарплата']
+    for i in range(len(person)):
         label = Label(text=person[i])
         label.grid(row=i, column=0)
     entry_lname = Entry(width=20)
@@ -89,10 +91,14 @@ def new_person() -> str:
     entry_fname.grid(row=1, column=1)
     entry_tel = Entry(width=20)
     entry_tel.grid(row=2, column=1)
+    entry_pos = Entry(width=20)
+    entry_pos.grid(row=3, column=1)
+    entry_salary = Entry(width=20)
+    entry_salary.grid(row=4, column=1)
     button = Button(text='Создать контакт', command=create)
     button.grid(row=3, column=1)
     new_window.mainloop()
-    return lname + ';' + fname + ';' + tel
+    return f'{lname};{fname};{tel};{pos};{salary}'
 
 def get_path() -> str:
     return fd.askopenfilename(filetypes=(("TXT files", "*.txt"),
