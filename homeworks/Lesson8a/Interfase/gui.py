@@ -1,38 +1,57 @@
 from tkinter import *
 from tkinter import filedialog as fd
 
-def show_list(input_list: list):
-    def ret(text: str):
+
+
+def ret_opt(args):
         global option
-        option = text
+        option = args
         phone_list.destroy()
-    phone_list
+
+def result_search():
+    buttons = Frame()
+    buttons.grid(row=1, column=1)
+    button = Button(master=buttons ,text = 'OK', command= lambda: ret_opt('0'))
+    button.pack()
+ 
+def option_button():
+    buttons = Frame()
+    buttons.grid(row=1, column=0)
+    button_search = Button(master=buttons, text='Поиск', command= lambda: ret_opt('1'))
+    button_search.pack(side=LEFT)
+    button_add = Button(master=buttons, text='Добавить', command= lambda: ret_opt('2'))
+    button_add.pack(side=LEFT)
+    button_del = Button(master=buttons, text='Удалить', command= lambda: ret_opt('3'))
+    button_del.pack(side=LEFT)
+    button_exit = Button(master=buttons, text='Выход', command= lambda: ret_opt('4'))
+    button_exit.pack(side=LEFT)
+
+def del_contact(length:int):
+    buttons = Frame()
+    buttons.grid(row=0,column=1)
+    label = Label(master=buttons, text = '*')
+    label.grid(row=0, column=0)
+    for i in range(length):
+        button = Button(master= buttons, height=1, text='Удалить', command= lambda:ret_opt(i))
+        button.grid(column=0, row=i+1, pady = 1)
+    
+
+def show_list(input_list: list, window_title:str, funct):
+    global phone_list
     phone_list = Tk()
-    phone_list.title('Список контактов')
+    phone_list.title(window_title)
     subscribers = Frame()
-    subscribers.pack(padx=5, pady=5)
+    subscribers.grid(row=0, column=0, padx=5, pady=5)
     details_list = [i.split(';') for i in input_list]
-    column_names = ['№','Фамилия','Имя','Телефон']
+    column_names = ['Фамилия','Имя','Телефон']
     for i in range(len(column_names)):
-        label = Label(master = subscribers,text= column_names[i], width=20)
-        label.grid(row=0, column=i)
-    for i in range(len(details_list)):
-        label = Label(master = subscribers,text=str(i+1))
-        label.grid(row=i+1, column=0)
+        label = Label(master = subscribers,text= column_names[i], foreground='Gold', width=20)
+        label.grid(row=0, column=i+1)
     for i in range(len(details_list)):
         for j in range(len(details_list[i])):
             label = Label(master = subscribers, text=details_list[i][j], width=20)
-            label.grid(row=i+1, column=j+1, padx= 5, pady= 5)
-    buttons = Frame()
-    buttons.pack()
-    button_search = Button(master=buttons, text='Поиск', command= lambda: ret('1'))
-    button_search.pack(side= LEFT)
-    button_add = Button(master=buttons, text='Добавить', command= lambda: ret('2'))
-    button_add.pack(side= LEFT)
-    button_del = Button(master=buttons, text='Удалить', command= lambda: ret('3'))
-    button_del.pack(side= LEFT)
-    button_exit = Button(master=buttons, text='Выход', command= lambda: ret('4'))
-    button_exit.pack(side= LEFT)
+            label.grid(row=i+1, column=j+1, pady=4)
+    funct()
     phone_list.mainloop()
     return option
 
@@ -79,16 +98,4 @@ def get_path() -> str:
     return fd.askopenfilename(filetypes=(("TXT files", "*.txt"),
                     ("CSV files", "*.csv"),
                    ("JSON files", "*.json")))
-
-def result_search(record: str) -> bool:
-    def dest():
-        show_record.destroy()
-    show_record = Tk()
-    show_record.title('Результаты поиска')
-    show_record.geometry('300x50')
-    for i in record:
-        rec_label = Label(master= show_record, text= i.replace(';', ' '), width=20)
-        rec_label.pack()
-    button = Button(master= show_record, text = 'OK', command= dest)
-    button.pack()
-    show_record.mainloop()
+   
