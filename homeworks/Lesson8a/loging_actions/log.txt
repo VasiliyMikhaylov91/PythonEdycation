@@ -7,3 +7,16 @@ change:Козловский;Стас;78995562;Монтер;70000 -> Козлов
 exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
 Open G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
 exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
+Open G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
+search:Инженер
+add:ацу;впрв;43523;ываы;500
+change:ацу;впрв;43523;ываы;500 -> Петров;впрв;43523;ываы;500
+delete:Петров;впрв;43523;ываы;500
+exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
+Open G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
+exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
+Open G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
+search:Пупкин
+exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
+Open G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.json
+exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.json
