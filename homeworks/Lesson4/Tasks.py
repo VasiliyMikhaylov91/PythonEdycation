@@ -36,19 +36,19 @@
 список неповторяющихся элементов исходной последовательности. 
 '''
 
-def uniq_list(number_list: list) -> list:
-    new_list = []
-    for i in range(len(number_list)):
-        count = 0
-        for j in range(len(number_list)):
-            if number_list[i] == number_list[j]:
-                count += 1
-            if count == 1 and j == len(number_list)-1:
-                new_list.append(i)
-    return new_list 
+# def uniq_list(number_list: list) -> list:
+#     new_list = []
+#     for i in range(len(number_list)):
+#         count = 0
+#         for j in range(len(number_list)):
+#             if number_list[i] == number_list[j]:
+#                 count += 1
+#             if count == 1 and j == len(number_list)-1:
+#                 new_list.append(i)
+#     return new_list 
 
-print(uniq_list([input('Введите число ') \
-    for i in range(int(input('Введите количество элементов списка ')))]))
+# print(uniq_list([input('Введите число ') \
+#     for i in range(int(input('Введите количество элементов списка ')))]))
 
 '''
 4 Задана натуральная степень k. Сформировать случайным образом список коэффициентов (значения от 0 до 100) 
@@ -58,21 +58,21 @@ print(uniq_list([input('Введите число ') \
 
 - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 '''
-# from random import randint
-# def polynom(degree: int) -> str:
-#     coeff = randint(0, 100)
-#     if degree < 0:
-#         return '=0'
-#     if coeff != 0:
-#         if degree == 0:
-#             return  f'+{coeff}' + polynom(degree - 1)
-#         elif degree == 1:
-#             return f'+{coeff}*x' + polynom(degree - 1)
-#         else:
-#             return f'+{coeff}*x**{degree}' + polynom(degree - 1)
-#     return polynom(degree - 1)
-# result = polynom(int(input('Введите степень числа ')))[1:]
-# print(result)
+from random import randint
+def polynom(degree: int) -> str:
+    coeff = randint(0, 100)
+    if degree < 0:
+        return '=0'
+    if coeff != 0:
+        if degree == 0:
+            return  f'+{coeff}' + polynom(degree - 1)
+        elif degree == 1:
+            return f'+{coeff}*x' + polynom(degree - 1)
+        else:
+            return f'+{coeff}*x**{degree}' + polynom(degree - 1)
+    return polynom(degree - 1)
+result = polynom(int(input('Введите степень числа ')))[1:]
+print(result)
 # with open('polynom.json', 'w') as polynom_file:
 #     polynom_file.write(result)
 '''

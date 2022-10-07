@@ -20,3 +20,7 @@ search:Пупкин
 exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
 Open G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.json
 exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.json
+Open G:/GeekBrains/PythonEdycation/file.txt
+exit: save to G:/GeekBrains/PythonEdycation/file.txt
+Open G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
+exit: save to G:/GeekBrains/PythonEdycation/homeworks/Lesson8a/Data/data_phone.txt
