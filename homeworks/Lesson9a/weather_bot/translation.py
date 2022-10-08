@@ -1,5 +1,5 @@
 distionary = dict(clear='Ясно \U00002600',
-                partlycloudy= 'Малооблачно \U0000F324',
+                partlycloudy= 'Малооблачно \U000026C5',
                 cloudy = 'Облачно с прояснениями \U000026C5',
                 overcast = 'Пасмурно \U00002601',
                 drizzle = 'Морось \U0001F4A7',

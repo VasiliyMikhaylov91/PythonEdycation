@@ -7,6 +7,7 @@ from config import  MY_BOT_TOKEN
 from translation import distionary, dict_wind
 
 from coord_weather import get_weather
+from city_coord import get_coord
 
 bot = Bot(token=MY_BOT_TOKEN)
 dp = Dispatcher(bot)
@@ -17,7 +18,7 @@ async def process_start_command(message: types.Message):
 
 @dp.message_handler()
 async def send_weather(message: types.Message):
-    dict_weather = get_weather(message.text)
+    dict_weather = get_weather(get_coord(message.text))
     await bot.send_message(message.from_user.id,\
                         f'Погода в городе {dict_weather["geo_object"]["locality"]["name"]}'+'\n'+\
                         f'Температура воздуха: {str(dict_weather["fact"]["temp"])} °C'+'\n'+\
