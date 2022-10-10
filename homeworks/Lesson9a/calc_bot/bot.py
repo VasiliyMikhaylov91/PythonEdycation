@@ -2,10 +2,12 @@ from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 
-from config import TOKEN
+import sys
+sys.path.insert(1,'G:\GeekBrains')
+from config import MY_BOT_TOKEN
 
 
-bot = Bot(token=TOKEN)
+bot = Bot(token=MY_BOT_TOKEN)
 dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
