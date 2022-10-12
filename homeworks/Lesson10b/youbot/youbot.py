@@ -1,7 +1,8 @@
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
-from aiogram.types import ContentType, Message
-from downloader import tube_title, tube_download
+from aiogram.utils import executor
+from aiogram.types import Message
+from downloader import tube_download
 
 
 import sys
@@ -16,12 +17,10 @@ async def process_start_command(message: Message):
     await message.reply("Привет!\nНапиши ссылку на видео с youtube и я скину его тебе!")
 
 
-@dp.message_handler(content_types=ContentType.VIDEO)
-async def send_weather(message: types.Message):
-    title = tube_title(message.text)
-    # await bot.send_message(message.from_user.id, title)
-    # tube_download(message.text)
-    await bot.send_video(message.chat.id, message.text)
+@dp.message_handler()
+async def send_video(message: types.Message):
+    await bot.send_video(message.chat.id, open('homeworks\Lesson10b\youbot\ '.replace(' ','')\
+        + await tube_download(message.text), 'rb'))
 
 
 if __name__ == '__main__':
