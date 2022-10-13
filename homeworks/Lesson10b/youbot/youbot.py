@@ -3,7 +3,7 @@ from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from aiogram.types import Message
 from downloader import tube_download
-
+import os
 
 import sys
 sys.path.insert(1,'G:\GeekBrains')
@@ -20,8 +20,7 @@ async def process_start_command(message: Message):
 @dp.message_handler()
 async def send_video(message: types.Message):
     await bot.send_video(message.chat.id, open('homeworks\Lesson10b\youbot\ '.replace(' ','')\
-        + await tube_download(message.text), 'rb'))
-
+        + await tube_download(message.text)), 'rb')
 
 if __name__ == '__main__':
     executor.start_polling(dp)
