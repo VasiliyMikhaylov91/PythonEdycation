@@ -3,7 +3,6 @@ from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from aiogram.types import Message
 from downloader import tube_download
-import os
 
 import sys
 sys.path.insert(1,'G:\GeekBrains')
@@ -16,11 +15,13 @@ dp = Dispatcher(bot)
 async def process_start_command(message: Message):
     await message.reply("Привет!\nНапиши ссылку на видео с youtube и я скину его тебе!")
 
-
 @dp.message_handler()
 async def send_video(message: types.Message):
-    await bot.send_video(message.chat.id, open('homeworks\Lesson10b\youbot\ '.replace(' ','')\
-        + await tube_download(message.text)), 'rb')
+    try:
+        await bot.send_video(message.chat.id, open('homeworks\Lesson10b\youbot\ '.replace(' ','')\
+            + await tube_download(message.text), 'rb'))
+    except:
+        await message.reply("Что-то пошло не так. Слишком большое видео.")
 
 if __name__ == '__main__':
     executor.start_polling(dp)
