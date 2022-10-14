@@ -21,7 +21,7 @@ async def send_video(message: types.Message):
         await bot.send_video(message.chat.id, open('homeworks\Lesson10b\youbot\ '.replace(' ','')\
             + await tube_download(message.text), 'rb'))
     except:
-        await message.reply("Что-то пошло не так. Слишком большое видео.")
+        await message.reply("Что-то пошло не так. Слишком большое видео или неверная ссылка")
 
 if __name__ == '__main__':
     executor.start_polling(dp)
